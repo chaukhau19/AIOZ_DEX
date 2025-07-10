@@ -1,0 +1,91 @@
+
+export const swapconfig = {
+
+  //DATA
+  URL: "https://aiozswap-web.vercel.app/#/swap",
+  Select_STRK_Token: 'Starknet',
+  Select_USDT_Token: 'Tether USD',
+  Select_WAIOZ_Token: 'Wrapped AIOZ',
+  Select_AIOZ_Token: 'AIOZ',
+  Select_USDC_Token: 'USDCoin',
+  Select_BTC_Token: '0xBitcoin',
+  Select_Verify_UNKNOWN_Token: 'Unknown Token',
+  Address_WAIOZ_Token: '0x9CA90d6Fe5e747200B97f42348fADE923889738A',
+  Address_STRK_Token: '0xEB00fDE9EA6818b18C8227Fa0C32d10cCAEe9ECa',
+  Address_USDC_Token: '0x6d706649c05764013534EdDDbe9287Bf22a78f45',
+  Address_USDT_Token: '0x8db0d130DaEA7a66F7279EF86f523E3C37258208',
+  Address_UNI_Token: '0x5C69bEe701ef814a2B6a3EDD2B4cF31f441d46c4',
+  Address_Token_Invalid: '0x8db0d1304013534EdDDb8fADE923889738A',
+
+  //DATA VALID
+  InputValues: ["0.000000001"],
+  InputValue_A_1: "1",  
+  InputValue_A_0: "0",
+  InputValue_A_high: "12345678900000", 
+
+  //DATA INVALID
+  InputValue_A_Insufficient: "10000",
+
+  //VERIFY
+  Expected_Account_MetaMask_Connected: "//button[.//p[text()='0xd793...0e85']]",
+  Expected_Account_CoinBase_Connected: "//button[.//p[text()='0x0D3f...9E3b']]",
+
+  //XPATH
+  topBalance_Element: "div.css-vurnku",
+  balanceSwap_Element: "[data-testid='balance-text'] p:nth-of-type(2)",
+  Total_BalanceSwap_From: '(//div[@data-testid="balance-text"]/p[2])[1]',
+  Total_BalanceSwap_To: '(//div[@data-testid="balance-text"]/p[2])[2]',
+  DropdownCost_Element: "(//div[contains(text(), '<$0.01')])[1]",
+  Price_Impact_on_Swap_Element: "(//div[contains(text(), 'Price impact')]/following-sibling::div//span)[1]",
+  Slippage_Tolerance_on_Swap_Element: "(//div[@data-testid='swap-li-label' and text()='Slippage tolerance']/following-sibling::div//*[contains(., '%')])[3]",
+  Price_Impact_on_ConfirmSwap_Element: "(//div[contains(text(), 'Price impact')]/following-sibling::div//span)[2]",
+  Slippage_Tolerance_on_ConfirmSwap_Element: "(//div[@data-testid='swap-li-label' and text()='Slippage tolerance']/following-sibling::div//*[contains(., '%')])[6]",
+  Select_Wallet_To_Connect_Element: "//div[@width='100%']//h2[text()='Select wallet to connect']",
+  Price_Impact_Warning_Element: "(//div[contains(., 'Price impact warning')])[14]",
+  No_Liquidity_Data_Element: "//div[contains(text(), 'No Liquidity Data')]",
+  Insufficient_AIOZ_Balance_Element: "//div[contains(text(), 'Insufficient AIOZ balance')]",
+  Insufficient_ETH_Balance_Element: "//div[contains(text(), 'Insufficient ETH balance')]",
+  Insufficient_USDT_Balance_Element: "//div[contains(text(), 'Insufficient USDT balance')]",
+  Insufficient_USDC_Balance_Element: "//div[contains(text(), 'Insufficient USDC balance')]",
+  Insufficient_STRK_Balance_Element: "//div[contains(text(), 'Insufficient STRK balance')]",
+  Appear_Here_Element: "//div[contains(text(), 'Appear Here')]",
+  Not_Initialized_Element: "//div[contains(text(), 'This pool must be initialized')]",
+  Enter_An_Amount_Element: "//button[div[text()='Enter an amount']]",
+  No_Results_Found_Element: "//p[text()='No results found.']",
+  Navbar_Connect_Wallet_Element: "//button[@data-testid='navbar-connect-wallet']",
+  Coinbase_Wallet_Element: "//div[contains(text(), 'Coinbase Wallet')]",
+  MetaMask_Wallet_Element: "//div[contains(text(), 'MetaMask')]",
+  Disconnected_Element: "//button[.//img[@title='Disconnect']]",
+  Connected_Element: "//button[@data-testid='web3-status-connected']",
+  AIOZ_Token_Element: "(//div[@title='AIOZ' and text()='AIOZ'])[1]",
+  Starknet_Token_Element: "(//div[@title='Starknet' and text()='Starknet'])[1]",
+  USDT_Token_Element: "(//div[@title='Tether USD' and text()='Tether USD'])[1]",
+  USDC_Token_Element: "(//div[@title='USDCoin' and text()='USDCoin'])[1]",
+  Auto_Slippage_Element: "(//div[text()='Auto'])[1]",
+  Current_Price_Element: "//div[text()='Current price:']",
+  UNKNOWN_Element: "//button[.//div[contains(text(), 'UNK')]]",
+
+  InputText_Token: 'input.token-amount-input',
+  InputText_Token_From: "[data-testid='balance-text'] p:nth-of-type(2)",
+  InputText_Token_From_on_ConfirmSwap: "[data-testid='INPUT-amount']",
+  InputText_Token_To_on_ConfirmSwap: "[data-testid='OUTPUT-amount']",
+  InputText_Slippage_Settings: "//input[@data-testid='slippage-input']",
+
+  Swap_Page: "//a[contains(text(), 'Swap')]",
+
+  Confirm_Swap_Button: "confirm-swap-button",
+  Close_Confirmation_Submitted_Icon: "confirmation-close-icon",
+  Close_Transaction_Submitted_Button: "//button[text()='Close']",
+  Close_Choose_Wallet_Button: "//img[@alt='Close' or @title='Close']",
+  Swap_Button: "//button[@id='swap-button']",
+  Connect_Wallet_Button: "//button[contains(text(), 'Connect wallet')]//div",
+  Wrap_Button: "//button[text()='Wrap']",
+  Unwrap_Button: "//button[text()='Unwrap']",
+  Token_Redemption_Button: "//div[@data-testid='swap-currency-button']",
+  Half_From_Button: "(//button[contains(text(), 'Half')])[1]",
+  Half_To_Button: "(//button[contains(text(), 'Half')])[2]",
+  Max_From_Button: "(//button[contains(text(), 'Max')])[1]",
+  Max_To_Button: "(//button[contains(text(), 'Max')])[2]",
+
+  Select_Token_Dropdown: '(//span[contains(@class, "token-symbol-container") and text()="Select a token"])[1]',
+};
