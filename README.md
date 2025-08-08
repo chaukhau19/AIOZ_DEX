@@ -39,14 +39,16 @@ npm install -g yarn
 # For Linux (Ubuntu/Debian-based) - install Node.js, npm, and Yarn
 # sudo apt-get update
 # sudo apt-get install -y nodejs npm yarn
-
+```
+```bash
 ########## 2. Install Project Dependencies ##########
 yarn install                               # Install all dependencies listed in package.json
 yarn playwright install                    # Install Playwright browsers (Chromium, Firefox, WebKit)
 apt-get install -y nodejs                  # Ensure Node.js is installed (for Linux environments)
 yarn add @playwright/test@latest @tenkeylabs/dappwright   # Add latest Playwright Test + Dappwright to project
 npm install playwright axios               # Install Playwright + Axios via npm (alternative if needed)
-
+```
+```bash
 ########## 2. (Optional) Java JDK for Allure ##########
 # For Windows (PowerShell) - install Java 17
 winget install --id Oracle.JDK.17
@@ -54,12 +56,14 @@ winget install --id Oracle.JDK.17
 $env:JAVA_HOME="C:\Program Files\Java\jdk-17"
 $env:Path += ";$env:JAVA_HOME\bin"
 java -version   # Verify Java installation
-
+```
+```bash
 ########## 3. Allure Report (Optional) ##########
 npm install -D allure-playwright                    # Install Allure reporter for Playwright
 npm install -g allure-commandline                   # Install Allure CLI globally
 npm install -D @playwright/test allure-playwright   # Ensure Playwright + Allure reporter in devDependencies
-
+```
+```bash
 ########## 4. View Allure Report ##########
 npx allure generate allure-results --clean   # Generate report from latest test results
 npx allure open                              # Open Allure report in browser
@@ -76,7 +80,8 @@ npm -v    # Show npm version
 yarn -v   # Show Yarn version
 yarn playwright --version   # Show Playwright version via Yarn
 npm playwright --version    # Show Playwright version via npm
-
+```
+```bash
 ########## 2. Uninstall All Dependencies ##########
 # FOR LINUX / MAC / GIT BASH - remove old dependencies and reports
 rm -rf node_modules package-lock.json yarn.lock playwright-report test-results
@@ -84,21 +89,25 @@ rm -rf node_modules package-lock.json yarn.lock playwright-report test-results
 Remove-Item -Recurse -Force node_modules
 Remove-Item -Force package-lock.json, yarn.lock
 Remove-Item -Recurse -Force playwright-report, test-results
-
+```
+```bash
 ########## 3. Fix esbuild (if needed) ##########
 npm install                   # Reinstall dependencies
 npm install esbuild --force   # Force install correct esbuild version
 ls -l node_modules/esbuild/bin/   # Verify esbuild binary exists
-
+```
+```bash
 ########## 4. Remove Old Playwright & Dappwright ##########
 yarn remove playwright @playwright/test @tenkeylabs/dappwright   # Remove via Yarn
 npm uninstall playwright @playwright/test @tenkeylabs/dappwright # Remove via npm
-
+```
+```bash
 ########## 5. Reinstall Core Tools ##########
 npm install -g yarn           # Install/Update Yarn globally
 yarn install                  # Reinstall dependencies from package.json
 npm install esbuild --force   # Fix esbuild issues
-
+```
+```bash
 ########## 6. Reinstall Playwright & Dappwright ##########
 yarn playwright install             # Install browsers only
 yarn playwright install --with-deps # Install browsers + system dependencies
