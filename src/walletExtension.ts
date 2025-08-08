@@ -1,10 +1,16 @@
 import { ethers } from "ethers";
-import { Eip1193Provider, Provider } from "ethers";
+
 import counterContract from "./counterContract.json";
 
 declare global {
+  interface EIP1193Provider {
+    request: (args: { method: string; params?: Array<unknown> }) => Promise<unknown>;
+    on?: (eventName: string, handler: (...args: any[]) => void) => void;
+    removeListener?: (eventName: string, handler: (...args: any[]) => void) => void;
+    // Add other EIP-1193 methods/properties as needed
+  }
   interface Window {
-    ethereum: Eip1193Provider & Provider;
+    ethereum: EIP1193Provider;
   }
 }
 
@@ -26,7 +32,7 @@ export async function init() {
   const transferFundsStatus = document.querySelector<HTMLInputElement>("#transfer-funds-status")!;
   const callContractStatus = document.querySelector<HTMLInputElement>("#call-contract-status")!;
 
-  window.ethereum.on("chainChanged", function (chainId) {
+  window.ethereum.on?.("chainChanged", function (chainId: any) {
     // Coinbase Wallet returns chainid as Int while Metamask returns a Hex
     const parsedChainId = Number.isInteger(chainId) ? parseInt(chainId).toString() : parseInt(chainId, 16).toString();
     networkSwitchStatus.value = parsedChainId;
@@ -46,7 +52,7 @@ export async function init() {
     connectStatus.value = "connected";
   });
 
-  networkSwitchStatus.value = parseInt(await window.ethereum.request({ method: "eth_chainId" })).toString();
+  networkSwitchStatus.value = parseInt((await window.ethereum.request({ method: "eth_chainId" })) as string).toString();
   switchNetworkButton.addEventListener("click", async function () {
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
