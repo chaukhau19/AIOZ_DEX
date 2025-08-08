@@ -169,8 +169,8 @@ du -ah ~ | grep "Jenkinsfile"                     # Search in the home directory
 # Install Node.js 18 (needed for Playwright & modern JS features)
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
-
-########################################################################
+```
+```bash
 # Install ethers.js library
 yarn add ethers    # Install with Yarn (recommended if project uses Yarn)
 npm install ethers # Install with npm (alternative)
@@ -185,8 +185,8 @@ sudo apt-get clean           # Clear package cache
 
 # Check if Xvfb is currently running
 ps aux | grep Xvfb
-
-########################################################################
+```
+```bash
 # In Jenkinsfile, update the test command to run with a virtual display
 xvfb-run --auto-servernum yarn test
 
@@ -195,8 +195,8 @@ sudo journalctl -u jenkins --no-pager | tail -n 50
 
 # View the last 50 lines of Jenkins log file
 cat /var/log/jenkins/jenkins.log | tail -n 50
-
-########################################################################
+```
+```bash
 # Install a specific Chromium build in a custom location for Playwright
 mkdir -p /var/lib/jenkins/.cache/ms-playwright/chromium-1148/
 cd /var/lib/jenkins/.cache/ms-playwright/chromium-1148/
