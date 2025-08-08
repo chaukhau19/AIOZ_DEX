@@ -12,17 +12,17 @@ cd dappwright-examples
 ### Part 1 - RUN 
 
 ```bash
-#Jenkins run on 1h sáng
+#Jenkins run on 1h 
 on Jenkins server: /var/lib/jenkins/workspace/Automation_AIOZ_Finance_main/AIOZ_Finance.sh
 #Result Jenkins:
 on ??
 ############
-# Git run on 3h sáng
+# Git run on 3h 
 on Run Playwright tests: use CMD
 #Result Git:
 on ??
 ############
-#Local run on 5h sáng
+#Local run on 5h 
 on Jenkins server: /var/lib/jenkins/workspace/Automation/AIOZ_Finance_Auto/run_on_remote_windows.sh
 #Result Local: 
 on Local
@@ -34,36 +34,35 @@ on Local
 
 ```bash
 ########## 1. System Requirements ##########
-# Install Node.js and Yarn (if not already installed)
+# Install Yarn globally (requires Node.js already installed)
 npm install -g yarn
-# For Linux (Ubuntu/Debian-based)
+# For Linux (Ubuntu/Debian-based) - install Node.js, npm, and Yarn
 # sudo apt-get update
 # sudo apt-get install -y nodejs npm yarn
 
 ########## 2. Install Project Dependencies ##########
-yarn install
-# Install Playwright browsers
-yarn playwright install
-# Add main libraries
-apt-get install -y nodejs
-yarn add @playwright/test@latest @tenkeylabs/dappwright
-npm install playwright axios
+yarn install                               # Install all dependencies listed in package.json
+yarn playwright install                    # Install Playwright browsers (Chromium, Firefox, WebKit)
+apt-get install -y nodejs                  # Ensure Node.js is installed (for Linux environments)
+yarn add @playwright/test@latest @tenkeylabs/dappwright   # Add latest Playwright Test + Dappwright to project
+npm install playwright axios               # Install Playwright + Axios via npm (alternative if needed)
 
 ########## 2. (Optional) Java JDK for Allure ##########
-# For Windows (PowerShell)
+# For Windows (PowerShell) - install Java 17
 winget install --id Oracle.JDK.17
+# Set JAVA_HOME environment variable
 $env:JAVA_HOME="C:\Program Files\Java\jdk-17"
 $env:Path += ";$env:JAVA_HOME\bin"
-java -version
+java -version   # Verify Java installation
 
 ########## 3. Allure Report (Optional) ##########
-npm install -D allure-playwright
-npm install -g allure-commandline
-npm install -D @playwright/test allure-playwright
+npm install -D allure-playwright                    # Install Allure reporter for Playwright
+npm install -g allure-commandline                   # Install Allure CLI globally
+npm install -D @playwright/test allure-playwright   # Ensure Playwright + Allure reporter in devDependencies
 
 ########## 4. View Allure Report ##########
-npx allure generate allure-results --clean
-npx allure open
+npx allure generate allure-results --clean   # Generate report from latest test results
+npx allure open                              # Open Allure report in browser
 ```
 
 #######################################################################################
@@ -72,39 +71,39 @@ npx allure open
 
 ```bash
 ########## 1. Check Versions ##########
-node -v
-npm -v
-yarn -v
-yarn playwright --version
-npm playwright --version
+node -v   # Show Node.js version
+npm -v    # Show npm version
+yarn -v   # Show Yarn version
+yarn playwright --version   # Show Playwright version via Yarn
+npm playwright --version    # Show Playwright version via npm
 
 ########## 2. Uninstall All Dependencies ##########
-# FOR LINUX / MAC / GIT BASH
+# FOR LINUX / MAC / GIT BASH - remove old dependencies and reports
 rm -rf node_modules package-lock.json yarn.lock playwright-report test-results
-# FOR WINDOWS PowerShell (Run one at a time)
+# FOR WINDOWS PowerShell - run these one by one
 Remove-Item -Recurse -Force node_modules
 Remove-Item -Force package-lock.json, yarn.lock
 Remove-Item -Recurse -Force playwright-report, test-results
 
 ########## 3. Fix esbuild (if needed) ##########
-npm install
-npm install esbuild --force
-ls -l node_modules/esbuild/bin/
+npm install                   # Reinstall dependencies
+npm install esbuild --force   # Force install correct esbuild version
+ls -l node_modules/esbuild/bin/   # Verify esbuild binary exists
 
 ########## 4. Remove Old Playwright & Dappwright ##########
-yarn remove playwright @playwright/test @tenkeylabs/dappwright
-npm uninstall playwright @playwright/test @tenkeylabs/dappwright
+yarn remove playwright @playwright/test @tenkeylabs/dappwright   # Remove via Yarn
+npm uninstall playwright @playwright/test @tenkeylabs/dappwright # Remove via npm
 
 ########## 5. Reinstall Core Tools ##########
-npm install -g yarn
-yarn install
-npm install esbuild --force  # Fix esbuild issues
+npm install -g yarn           # Install/Update Yarn globally
+yarn install                  # Reinstall dependencies from package.json
+npm install esbuild --force   # Fix esbuild issues
 
 ########## 6. Reinstall Playwright & Dappwright ##########
-yarn playwright install
-yarn playwright install --with-deps
-yarn add @playwright/test@latest @tenkeylabs/dappwright
-yarn add @playwright/testt@1.48.2 @tenkeylabs/dappwright #If need test 1.48.2
+yarn playwright install             # Install browsers only
+yarn playwright install --with-deps # Install browsers + system dependencies
+yarn add @playwright/test@latest @tenkeylabs/dappwright   # Add latest Playwright Test + Dappwright
+yarn add @playwright/testt@1.48.2 @tenkeylabs/dappwright   # Install specific version if needed
 ```
 
 #######################################################################################
@@ -112,18 +111,18 @@ yarn add @playwright/testt@1.48.2 @tenkeylabs/dappwright #If need test 1.48.2
 ### Part 4 - Running the dApp
 
 ```bash
-yarn test:All
+yarn test:All   # Run all automated tests
 
-yarn test:ConnectMetaMask
-yarn test:ConnectCoinBase  
-yarn test:ConnectMetaMask && yarn test:ConnectCoinBase
+yarn test:ConnectMetaMask   # Run MetaMask connection tests
+yarn test:ConnectCoinBase   # Run Coinbase connection tests
+yarn test:ConnectMetaMask && yarn test:ConnectCoinBase   # Run both tests sequentially
 
-yarn test:ConnectMetaMask --headed
-yarn test:ConnectMetaMask --debug
-yarn test:ConnectMetaMask --worker=1
+yarn test:ConnectMetaMask --headed   # Run MetaMask test with browser UI visible
+yarn test:ConnectMetaMask --debug    # Run MetaMask test in debug mode (slow-mo, verbose logs)
+yarn test:ConnectMetaMask --worker=1 # Run MetaMask test in a single-threaded mode
 
-yarn dev # first terminal
-yarn chain # second terminal
+yarn dev    # Start development server (First terminal)
+yarn chain  # Start blockchain network (Second terminal)
 ```
 
 #######################################################################################
@@ -145,61 +144,69 @@ Verify that the system processes the transaction logic correctly and that the ba
 ### Part 6 - Additional Information Automation Source on Jenkins 
 
 ```bash
-# Auto folder on Jenkins server
+# Navigate to the Jenkins job workspace directory
 cd /var/lib/jenkins/workspace/Automation_AIOZ_Finance_main
+
+# Navigate to Playwright browser cache folder on Jenkins
 cd /var/lib/jenkins/.cache/ms-playwright
 
-# Check auto folder on Jenkins server
+# List all Jenkins job workspaces with detailed info (size, permissions, owner, etc.)
 ls -lah /var/lib/jenkins/workspace/
 
-# Find file Jenkinsfile
-find / -type f -name "Jenkinsfile" 2>/dev/null
-du -ah ~ | grep "Jenkinsfile"
+# Find Jenkinsfile location across the entire server
+find / -type f -name "Jenkinsfile" 2>/dev/null    # Search silently (ignore permission errors)
+du -ah ~ | grep "Jenkinsfile"                     # Search in the home directory
 
-# Install Node.js 18
+# Install Node.js 18 (needed for Playwright & modern JS features)
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 
 ########################################################################
-# Install ethers
-yarn add ethers #yarn
-npm install ethers #npm
+# Install ethers.js library
+yarn add ethers    # Install with Yarn (recommended if project uses Yarn)
+npm install ethers # Install with npm (alternative)
 
-# Install Xvfb
+# Install Xvfb (X Virtual Framebuffer) - allows headless browsers to run in virtual display
 sudo apt-get install -y xvfb
 
-# Uninstall Xvfb
+# Uninstall Xvfb completely
 sudo apt-get remove --purge -y xvfb
-sudo apt-get autoremove -y
-sudo apt-get clean
+sudo apt-get autoremove -y   # Remove unused packages
+sudo apt-get clean           # Clear package cache
 
-# Check status Xvfb
+# Check if Xvfb is currently running
 ps aux | grep Xvfb
 
 ########################################################################
-#Trong Jenkinsfile, cập nhật command để chạy test như sau:
+# In Jenkinsfile, update the test command to run with a virtual display
 xvfb-run --auto-servernum yarn test
 
-# Kiểm tra log hệ thống của Jenkins
+# View Jenkins system logs (last 50 lines)
 sudo journalctl -u jenkins --no-pager | tail -n 50
 
-# Kiểm tra logs trong thư mục Jenkins
+# View the last 50 lines of Jenkins log file
 cat /var/log/jenkins/jenkins.log | tail -n 50
 
 ########################################################################
-#Cài đặt Chromium vào thư mục cụ thể
+# Install a specific Chromium build in a custom location for Playwright
 mkdir -p /var/lib/jenkins/.cache/ms-playwright/chromium-1148/
 cd /var/lib/jenkins/.cache/ms-playwright/chromium-1148/
+
+# Download Chromium build 1148 from Playwright CDN
 wget https://playwright.azureedge.net/builds/chromium/1148/chromium-linux.zip
 
+# Extract the downloaded zip
 unzip chromium-linux.zip
+
+# Move extracted Chromium to the correct cache folder
 mv chrome-linux /var/lib/jenkins/.cache/ms-playwright/chromium-1148/
 
+# Set correct permissions so Jenkins can execute it
 chmod -R 755 /var/lib/jenkins/.cache/ms-playwright/
 chown -R jenkins:jenkins /var/lib/jenkins/.cache/ms-playwright/
 chmod +x /var/lib/jenkins/.cache/ms-playwright/chromium-1148/chrome-linux/chrome
 
-# This will link old Chromium version to a new version path
+# Link old Chromium version to a new version path (symlink)
 ln -s chromium-1148/ chromium-1150
 ```
 
