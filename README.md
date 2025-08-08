@@ -1,10 +1,13 @@
 # Playwright
 
+```bash
 This is a test dApp that shows the different ways you can integrate [dAppwright](https://github.com/TenKeyLabs/dappwright) into your test suite.
 You can find the different configurations in the [tests folder](https://github.com/TenKeyLabs/dappwright-examples/tree/main/tests).
 git clone https://github.com/TenKeyLabs/dappwright-examples.git
 cd dappwright-examples
-################################################################################################################################################
+```
+
+#######################################################################################
 
 ### Part 1 - RUN 
 
@@ -24,7 +27,8 @@ on Jenkins server: /var/lib/jenkins/workspace/Automation/AIOZ_Finance_Auto/run_o
 #Result Local: 
 on Local
 ```
-################################################################################################################################################
+
+#######################################################################################
 
 ### Part 2 - Installation Library Yarn (New User) 
 
@@ -61,7 +65,8 @@ npm install -D @playwright/test allure-playwright
 npx allure generate allure-results --clean
 npx allure open
 ```
-################################################################################################################################################
+
+#######################################################################################
 
 ### Part 3 - Installation Library Yarn (Old User)
 
@@ -100,9 +105,9 @@ yarn playwright install
 yarn playwright install --with-deps
 yarn add @playwright/test@latest @tenkeylabs/dappwright
 yarn add @playwright/testt@1.48.2 @tenkeylabs/dappwright #If need test 1.48.2
-
 ```
-################################################################################################################################################
+
+#######################################################################################
 
 ### Part 4 - Running the dApp
 
@@ -120,7 +125,8 @@ yarn test:ConnectMetaMask --worker=1
 yarn dev # first terminal
 yarn chain # second terminal
 ```
-################################################################################################################################################
+
+#######################################################################################
 
 ### Part 5 - Additional Information Auto Local
 
@@ -134,7 +140,7 @@ Start with a balance of 500 of each type, execute trades to reach a limit state 
 Verify that the system processes the transaction logic correctly and that the balance reflects correctly after each step
 ```
 
-################################################################################################################################################
+#######################################################################################
 
 ### Part 6 - Additional Information Automation Source on Jenkins 
 
@@ -159,7 +165,6 @@ sudo apt install -y nodejs
 yarn add ethers #yarn
 npm install ethers #npm
 
-########################################################################
 # Install Xvfb
 sudo apt-get install -y xvfb
 
@@ -175,11 +180,9 @@ ps aux | grep Xvfb
 #Trong Jenkinsfile, cập nhật command để chạy test như sau:
 xvfb-run --auto-servernum yarn test
 
-########################################################################
 # Kiểm tra log hệ thống của Jenkins
 sudo journalctl -u jenkins --no-pager | tail -n 50
 
-########################################################################
 # Kiểm tra logs trong thư mục Jenkins
 cat /var/log/jenkins/jenkins.log | tail -n 50
 
@@ -196,17 +199,14 @@ chmod -R 755 /var/lib/jenkins/.cache/ms-playwright/
 chown -R jenkins:jenkins /var/lib/jenkins/.cache/ms-playwright/
 chmod +x /var/lib/jenkins/.cache/ms-playwright/chromium-1148/chrome-linux/chrome
 
-########################################################################
 # This will link old Chromium version to a new version path
 ln -s chromium-1148/ chromium-1150
-
 ```
 
-################################################################################################################################################
+#######################################################################################
 
 ### Part 7 - Error Jenkins and Fix
 ```bash
-########################################################################
 # ERROR:
 # stderr: error: unable to unlink old 'dist/assets/index-b6bb3e45.js': Permission denied
 # error: unable to unlink old 'dist/assets/index-dfec0afb.css': Permission denied
@@ -391,9 +391,8 @@ Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ---> 
 npx playwright install 
 <---
-
 ```
 
-################################################################################################################################################
+#######################################################################################
 
 
