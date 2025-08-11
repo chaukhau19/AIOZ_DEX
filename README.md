@@ -221,7 +221,97 @@ ln -s chromium-1148/ chromium-1150
 
 #######################################################################################
 
-### Part 7 - Error Jenkins and Fix
+### Part 7 - Source Folder
+
+```bash 
+
+AIOZ-DEX/
+│
+├── Data/                         # Test data
+│   ├── Assets_Config.js
+│   ├── Explore_Config.js
+│   ├── Farm_Config.js
+│   ├── Position_Config.js
+│   ├── Swap_Config.js
+│
+├── Pages/                     # API handler functions for each module
+│   ├── 1_Swap/
+│   │   ├── 01_Valid_Swap
+│   │   │  ├── Swap.js
+│   │   ├── 02_Invalid_Swap
+│   │   │  ├── Swap.js
+│   ├── 2_Position/
+│   │   ├── 01_Valid_Position
+│   │   │  ├── Position.js
+│   │   ├── 02_Invalid_Position
+│   │   │  ├── Position.js
+│   ├── 3_Assets/
+│   │   ├── 01_Valid_Assets
+│   │   │  ├── Your_Assets.js
+│   │   ├── 02_Invalid_Assets
+│   │   │  ├── Your_Assets.js
+│   ├── 4_Farm/
+│   │   ├── 01_Valid_Farm
+│   │   │  ├── Farm.js
+│   │   ├── 02_Invalid_Farm
+│   │   │  ├── Farm.js
+│   ├── 5_Explore/
+│   │   ├── 01_Valid_Explore
+│   │   │  ├── Explore.js
+│   │   ├── 02_Invalid_Explore
+│   │   │  ├── Explore.js
+│   ├── 6_Dapps/
+│   │   ├── 01_CoinBase
+│   │   │  ├── CoinBase.js
+│   │   ├── 02_MetaMask
+│   │   │  ├── MetaMask.js
+│   │   ├── SetupCoinBase.js
+│   │   ├── SetupMetaMask.js
+│   ├── Functions.js
+│
+├── Tests/                        # Test cases
+│   ├── 1_Swap/
+│   │   ├── 01_Valid_Swap
+│   │   │  ├── Swap.spec.js
+│   │   ├── 02_Invalid_Swap
+│   │   │  ├── Swap.spec.js
+│   ├── 2_Position/
+│   │   ├── 01_Valid_Position
+│   │   │  ├── Position.spec.js
+│   │   ├── 02_Invalid_Position
+│   │   │  ├── Position.spec.js
+│   ├── 3_Assets/
+│   │   ├── 01_Valid_Assets
+│   │   │  ├── Your_Assets.spec.js
+│   │   ├── 02_Invalid_Assets
+│   │   │  ├── Your_Assets.spec.js
+│   ├── 4_Farm/
+│   │   ├── 01_Valid_Farm
+│   │   │  ├── Farm.spec.js
+│   │   ├── 02_Invalid_Farm
+│   │   │  ├── Farm.spec.js
+│   ├── 5_Explore/
+│   │   ├── 01_Valid_Explore
+│   │   │  ├── Explore.spec.js
+│   │   ├── 02_Invalid_Explore
+│   │   │  ├── Explore.spec.js
+│   ├── 6_Dapps/
+│   │   ├── 01_CoinBase
+│   │   │  ├── CoinBase.spec.js
+│   │   ├── 02_MetaMask
+│   │   │  ├── MetaMask.spec.js
+│   
+├── SendEmail.spec.js         # Calls email sending function from CustomLibs
+├── AIOZ_DEX.bat               # Quick launch script for Windows
+├── playwright.config.js           # Playwright configuration file
+├── package.json
+└── README.md
+```
+
+#######################################################################################
+
+### Part 8 - Error Jenkins and Fix
+
 ```bash
 # ERROR:
 # stderr: error: unable to unlink old 'dist/assets/index-b6bb3e45.js': Permission denied
