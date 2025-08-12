@@ -224,7 +224,6 @@ ln -s chromium-1148/ chromium-1150
 ### Part 7 - Source Folder
 
 ```bash 
-
 AIOZ-DEX/
 │
 ├── Data/                         # Test data
@@ -306,6 +305,59 @@ AIOZ-DEX/
 ├── playwright.config.js           # Playwright configuration file
 ├── package.json
 └── README.md
+```
+```bash 
+AIOZ-DEX/
+├── Data/                    # Contains all test data for each module
+│   ├── SwapData.js          # Test data for Swap module
+│   ├── PositionData.js      # Test data for Position module
+│   ├── AssetsData.js        # Test data for Assets module
+│   ├── FarmData.js          # Test data for Farm module
+│   ├── ExploreData.js       # Test data for Explore module
+│
+├── Pages/                   # Page Objects / API request handlers
+│   ├── Swap.js              # Swap-related actions
+│   ├── Position.js          # Position-related actions
+│   ├── Assets.js            # Assets-related actions
+│   ├── Farm.js              # Farm-related actions
+│   ├── Explore.js           # Explore-related actions
+│   ├── Dapps/               # Decentralized application integrations
+│   │   ├── CoinBase.js      # Coinbase connection methods
+│   │   ├── MetaMask.js      # MetaMask connection methods
+│   │   ├── SetupCoinBase.js # Coinbase setup process
+│   │   ├── SetupMetaMask.js # MetaMask setup process
+│
+├── Tests/                   # Automated test cases
+│   ├── Swap/
+│   │   ├── SwapValid.spec.js    # Swap tests with valid data
+│   │   ├── SwapInvalid.spec.js  # Swap tests with invalid data
+│   ├── Position/
+│   │   ├── PositionValid.spec.js
+│   │   ├── PositionInvalid.spec.js
+│   ├── Assets/
+│   │   ├── AssetsValid.spec.js
+│   │   ├── AssetsInvalid.spec.js
+│   ├── Farm/
+│   │   ├── FarmValid.spec.js
+│   │   ├── FarmInvalid.spec.js
+│   ├── Explore/
+│   │   ├── ExploreValid.spec.js
+│   │   ├── ExploreInvalid.spec.js
+│   ├── Dapps/
+│   │   ├── CoinBase.spec.js     # Coinbase integration tests
+│   │   ├── MetaMask.spec.js     # MetaMask integration tests
+│
+├── Libs/                    # Common libraries and helper functions
+│   ├── Csv.js               # CSV file operations
+│   ├── Excel.js             # Excel file operations
+│   ├── ReadDataExcel.js     # Read Excel data utility
+│   ├── SendEmail.js         # Email sending utility
+│
+├── SendEmail.spec.js        # Test for email sending feature
+├── AIOZ_DEX.bat              # Batch file to run the project
+├── playwright.config.js      # Playwright configuration file
+├── package.json              # Project dependencies and scripts
+└── README.md                 # Project documentation
 ```
 
 #######################################################################################
